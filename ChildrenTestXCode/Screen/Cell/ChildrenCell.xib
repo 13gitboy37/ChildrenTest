@@ -33,9 +33,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="181.33333333333334" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
-                                <connections>
-                                    <action selector="endEditingName:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="6xH-TF-hsH"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdU-Bw-SFb">
                                 <rect key="frame" x="10.000000000000002" y="2.0000000000000009" width="24.666666666666671" height="14.333333333333336"/>
@@ -62,9 +59,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="181.33333333333334" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
-                                <connections>
-                                    <action selector="endEditingAge:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="6jT-Y8-cL0"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QT-Ja-GGm">
                                 <rect key="frame" x="10.000000000000004" y="2.0000000000000009" width="48.333333333333343" height="14.333333333333336"/>
