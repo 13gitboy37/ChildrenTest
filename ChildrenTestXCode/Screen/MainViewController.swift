@@ -38,7 +38,6 @@ class MainViewController: UIViewController {
         ageParentTextField.delegate = self
         childrenTableView.delegate = self
         childrenTableView.dataSource = self
-        
         childrenTableView.register(UINib(nibName: "ChildrenCell", bundle: nil),
                                    forCellReuseIdentifier: "childrenCell")
     }
@@ -46,13 +45,12 @@ class MainViewController: UIViewController {
     //MARK: Private methods
     private func addChildrenRow() {
         self.childrenTableView.isHidden = false
-        if numbOfRows < 5 {
             childrenTableView.beginUpdates()
             let indexPath = IndexPath(row: numbOfRows, section: 0)
             childrenTableView.insertRows(at: [indexPath], with: .automatic)
             numbOfRows += 1
             childrenTableView.endUpdates()
-        } else {
+        if numbOfRows == 5 {
             addChildrenButton.isHidden = true
         }
     }
@@ -83,6 +81,7 @@ class MainViewController: UIViewController {
         childrenTableView.isHidden = true
         parentNameTextField.text = ""
         ageParentTextField.text = ""
+        addChildrenButton.isHidden = false
     }
 }
 
@@ -100,10 +99,10 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let childrenCell = childrenTableView.dequeueReusableCell(withIdentifier: "childrenCell", for: indexPath)
         guard let cell = childrenCell as? ChildrenCell else { return UITableViewCell() }
-        cell.delegate = self //delegate = view
+        cell.delegate = self
+        cell.getIndexPath(indexPath: indexPath)
         cell.nameChildTextFields.text = ""
         cell.ageChildTextField.text = ""
-        cell.getIndexPath(indexPath: indexPath)
         return cell
     }
 }
@@ -127,8 +126,13 @@ extension MainViewController: MainCellDelegate {
     func deleteRow(indexPath: IndexPath) {
         childrenTableView.beginUpdates()
         childrenTableView.deleteRows(at: [indexPath], with: .automatic)
-        numbOfRows -= 1
+        if numbOfRows != 1 {
+            numbOfRows -= 1
+        } else {
+            numbOfRows = 0
+        }
         childrenTableView.endUpdates()
+        addChildrenButton.isHidden = false
     }
 }
 
