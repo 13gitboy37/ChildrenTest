@@ -36,6 +36,10 @@ class ChildrenCell: UITableViewCell {
     func getIndexPath(indexPath: IndexPath) {
         self.indexPath = indexPath
     }
+    
+    func configure() {
+        
+    }
 }
 
 //MARK: Delegate
