@@ -8,6 +8,8 @@
 import UIKit
 
 protocol MainCellDelegate {
-    func deleteRow(indexPath: IndexPath)
+    func addNameChildren(name: String, id: Int)
+    func addAgeChildren(age: String, id: Int)
+    func deleteRow(id: Int)
 }
 
