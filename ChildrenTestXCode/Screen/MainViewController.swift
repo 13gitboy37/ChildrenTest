@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var addChildrenButton: UIButton!
     
     //MARK: Private properties
-    private var numbOfRows = 0
+    var usersInfo = Parent(name: "", age: "", childrens: [])
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -46,11 +46,11 @@ class MainViewController: UIViewController {
     private func addChildrenRow() {
         self.childrenTableView.isHidden = false
             childrenTableView.beginUpdates()
-            let indexPath = IndexPath(row: numbOfRows, section: 0)
+        let indexPath = IndexPath(row: usersInfo.childrens.count, section: 0)
             childrenTableView.insertRows(at: [indexPath], with: .automatic)
-            numbOfRows += 1
+        usersInfo.childrens.append(Children(name: "", age: "", id: usersInfo.childrens.count))
             childrenTableView.endUpdates()
-        if numbOfRows == 5 {
+        if usersInfo.childrens.count == 5 {
             addChildrenButton.isHidden = true
         }
     }
@@ -71,12 +71,12 @@ class MainViewController: UIViewController {
     
     private func deleteInfo() {
         var indexPaths = [IndexPath]()
-        for i in 0..<numbOfRows {
+        for i in 0..<usersInfo.childrens.count {
             indexPaths.append(IndexPath(row: i, section: 0))
         }
         childrenTableView.beginUpdates()
         childrenTableView.deleteRows(at: indexPaths, with: .fade)
-        numbOfRows = 0
+        usersInfo.childrens = []
         childrenTableView.endUpdates()
         childrenTableView.isHidden = true
         parentNameTextField.text = ""
@@ -87,22 +87,24 @@ class MainViewController: UIViewController {
 
 //MARK: Table View Delegate
 extension MainViewController: UITableViewDelegate {
-    
+ 
 }
 
 //MARK: Table View Data Source
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        numbOfRows
+        usersInfo.childrens.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let childrenCell = childrenTableView.dequeueReusableCell(withIdentifier: "childrenCell", for: indexPath)
+        let currentId = usersInfo.childrens[indexPath.row].id
         guard let cell = childrenCell as? ChildrenCell else { return UITableViewCell() }
         cell.delegate = self
         cell.getIndexPath(indexPath: indexPath)
-        cell.nameChildTextFields.text = ""
-        cell.ageChildTextField.text = ""
+        cell.idChildren = currentId
+        cell.nameChildTextFields.text = usersInfo.childrens[indexPath.row].name
+        cell.ageChildTextField.text = usersInfo.childrens[indexPath.row].age
         return cell
     }
 }
@@ -123,14 +125,24 @@ extension MainViewController: UITextFieldDelegate {
 
 //MARK: Table Cell Delegate
 extension MainViewController: MainCellDelegate {
-    func deleteRow(indexPath: IndexPath) {
+    
+    func addNameChildren(name: String, id: Int) {
+        let index = usersInfo.childrens.firstIndex { $0.id == id } ?? 0
+        usersInfo.childrens[index].name = name
+    }
+    
+    func addAgeChildren(age: String, id: Int) {
+        let index = usersInfo.childrens.firstIndex { $0.id == id } ?? 0
+        usersInfo.childrens[index].age = age
+    }
+    
+    func deleteRow(id: Int) {
+        let row = usersInfo.childrens.firstIndex { $0.id == id } ?? 0
+        print(row)
+        let indexPath = IndexPath(row: row, section: 0)
         childrenTableView.beginUpdates()
         childrenTableView.deleteRows(at: [indexPath], with: .automatic)
-        if numbOfRows != 1 {
-            numbOfRows -= 1
-        } else {
-            numbOfRows = 0
-        }
+        usersInfo.childrens.remove(at: row)
         childrenTableView.endUpdates()
         addChildrenButton.isHidden = false
     }

@@ -15,6 +15,7 @@ class ChildrenCell: UITableViewCell {
     
     //MARK: Private properties
     private var indexPath = IndexPath()
+    var idChildren = 0
     
     //MARK: Properties
     var delegate: MainCellDelegate?
@@ -26,8 +27,20 @@ class ChildrenCell: UITableViewCell {
     }
     
     //MARK: IBActions
-    @IBAction func tapDeleteChildren(_ sender: Any) {
-        delegate?.deleteRow(indexPath: indexPath)
+    
+    
+    @IBAction func didEndEditingName(_ sender: UITextField) {
+        guard let name = sender.text else { return }
+        delegate?.addNameChildren(name: name, id: idChildren)
+    }
+    
+    @IBAction func didEndEditingAge(_ sender: UITextField) {
+        guard let age = sender.text else { return }
+        delegate?.addAgeChildren(age: age, id: idChildren)
+    }
+    
+    @IBAction func tapDeleteChildren(_ sender: UIButton) {
+        delegate?.deleteRow(id: idChildren)
         nameChildTextFields.text = ""
         ageChildTextField.text = ""
     }

@@ -16,6 +16,7 @@
 		AFD3DF722906C3E5009582AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFD3DF702906C3E5009582AE /* LaunchScreen.storyboard */; };
 		AFD3DF862906CDC6009582AE /* ChildrenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD3DF842906CDC6009582AE /* ChildrenCell.swift */; };
 		AFD3DF872906CDC6009582AE /* ChildrenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD3DF852906CDC6009582AE /* ChildrenCell.xib */; };
+		AFFB4F8B290984EE009D96F5 /* Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB4F8A290984EE009D96F5 /* Parent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AFD3DF732906C3E5009582AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFD3DF842906CDC6009582AE /* ChildrenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildrenCell.swift; sourceTree = "<group>"; };
 		AFD3DF852906CDC6009582AE /* ChildrenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChildrenCell.xib; sourceTree = "<group>"; };
+		AFFB4F8A290984EE009D96F5 /* Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		AFD3DF642906C3E4009582AE /* ChildrenTestXCode */ = {
 			isa = PBXGroup;
 			children = (
+				AFFB4F89290984B6009D96F5 /* Model */,
 				AF0B5C2A29072156002CD8E5 /* Extension */,
 				AFD3DF7A2906C66E009582AE /* App */,
 				AFD3DF7B2906C674009582AE /* Screen */,
@@ -114,6 +117,14 @@
 				AFD3DF852906CDC6009582AE /* ChildrenCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		AFFB4F89290984B6009D96F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AFFB4F8A290984EE009D96F5 /* Parent.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 				AF9E39312906FE6A00CA6339 /* MainCellDelegate.swift in Sources */,
 				AFD3DF662906C3E4009582AE /* AppDelegate.swift in Sources */,
 				AFD3DF682906C3E4009582AE /* SceneDelegate.swift in Sources */,
+				AFFB4F8B290984EE009D96F5 /* Parent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
